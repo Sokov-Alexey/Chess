@@ -10,20 +10,20 @@ public class King extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if (toLine > -1 && toLine < 8 && toColumn > -1 && toColumn < 8) {
-            if (Math.abs(toColumn - column) == 1 || Math.abs(toLine - line) == 1) {
-                if ((chessBoard.board[toLine][toColumn] == null) || !chessBoard.board[toLine][toColumn].getColor().equals(this.getColor())) {
-                    return !isUnderAttack(chessBoard, line, column, toLine, toColumn);
-                }
-                return false;
+
+        if (toLine > -1 && toLine < 8 && toColumn > -1 && toColumn < 8) {return false;}
+
+        if (Math.abs(toColumn - column) == 1 || Math.abs(toLine - line) == 1) {
+            if ((chessBoard.board[toLine][toColumn] == null) || !chessBoard.board[toLine][toColumn].getColor().equals(this.getColor())) {
+                return !isUnderAttack(chessBoard, line, column, toLine, toColumn);
             }
             return false;
         }
         return false;
     }
 
-
     public boolean isUnderAttack(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+
         boolean isTrue = false;
 
         ChessPiece tempChessPiece = chessBoard.board[toLine][toColumn];
